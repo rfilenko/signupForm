@@ -1,11 +1,17 @@
 import React from "react";
-import Header from "./Header";
 
+import FormMain from "./components/FormMain";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <Header />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={FormMain} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
