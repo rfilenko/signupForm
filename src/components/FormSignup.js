@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
-import { Form } from "../styles/Form";
+import { FormSign } from "../styles/Form";
 
-function FormMain() {
+function FormSignup() {
   return (
     <FormWrap>
       <Nav />
-      <Form noValidate>
-        <h2>Login to Your Account</h2>
+      <FormSign noValidate>
+        <h2>Signup For An Account</h2>
+        <div className="form-field">
+          <label htmlFor="user">
+            <input type="text" name="user" />
+          </label>
+        </div>
         <div className="form-field">
           <label htmlFor="email">
             <input type="email" name="email" />
@@ -21,24 +26,16 @@ function FormMain() {
             <input type="password" name="password" />
           </label>
         </div>
-        <div className="form-field remember-block">
-          <label>
-            <input type="checkbox" name="isChecked" />
-            <span></span>
-            Remember me
-          </label>
-
-          <Link to="/forgot"> Forgot Password?</Link>
-        </div>
         <div className="form-field">
-          <button>Login</button>
+          <button>Sign me up</button>
         </div>
         <div className="form-field signup-block">
-          <span>Don't have an account? </span>
-          <Link to="/signup"> Signup</Link>
+          <span>Already have an account? </span>
+          <Link to="/"> Login</Link>
         </div>
-      </Form>
+      </FormSign>
     </FormWrap>
   );
 }
-export default FormMain;
+
+export default FormSignup;
