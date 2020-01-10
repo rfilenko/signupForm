@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+
+import useForm from "./useForm";
 
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { FormSign } from "../styles/Form";
-import useForm from "./useForm";
 
 function FormSignup() {
   const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
