@@ -1,29 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { Form } from "../styles/Form";
+import useForm from "./useForm";
 
 function FormMain() {
+  const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
+  function submit() {
+    console.log("Submit successfully");
+  }
+
   return (
     <FormWrap>
       <Nav />
-      <Form noValidate>
+      <Form noValidate onSubmit={handleSubmit}>
         <h2>Login to Your Account</h2>
         <div className="form-field">
           <label htmlFor="email">
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
           </label>
         </div>
         <div className="form-field">
           <label htmlFor="password">
-            <input type="password" name="password" />
+            <input
+              type="password"
+              name="password"
+              value={values.password}
+              placeholder={values.Navpassword}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
           </label>
         </div>
         <div className="form-field remember-block">
           <label>
-            <input type="checkbox" name="isChecked" />
+            <input
+              type="checkbox"
+              name="isChecked"
+              value={values.isChecked}
+              onChange={handleChange}
+            />
             <span></span>
             Remember me
           </label>

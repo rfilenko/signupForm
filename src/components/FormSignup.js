@@ -1,29 +1,54 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { FormSign } from "../styles/Form";
+import useForm from "./useForm";
 
 function FormSignup() {
+  const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
+  function submit() {
+    console.log("Submit successfully");
+  }
+
   return (
     <FormWrap>
       <Nav />
-      <FormSign noValidate>
+      <FormSign noValidate onSubmit={handleSubmit}>
         <h2>Signup For An Account</h2>
         <div className="form-field">
           <label htmlFor="user">
-            <input type="text" name="user" />
+            <input
+              type="text"
+              name="user"
+              value={values.user}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
           </label>
         </div>
         <div className="form-field">
           <label htmlFor="email">
-            <input type="email" name="email" />
+            <input
+              type="email"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
           </label>
         </div>
         <div className="form-field">
           <label htmlFor="password">
-            <input type="password" name="password" />
+            <input
+              type="password"
+              name="password"
+              value={values.password}
+              placeholder={values.password}
+              onChange={handleChange}
+              onFocus={handleFocus}
+            />
           </label>
         </div>
         <div className="form-field">
