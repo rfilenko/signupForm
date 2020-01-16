@@ -13,6 +13,27 @@ import { FormContext } from "../context/FormContext";
 function User() {
   const { loggedIn, person } = useContext(FormContext);
 
+  // to show data from firebase
+  function AddTodo() {
+    const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+      const unsubscribe = firebase
+        .firestore()
+        .collection("todos")
+        .onSnapshot(snapshot => {
+          const newTodos = snapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data()
+          }));
+          setTodos(newTodos);
+          // debugger;
+        });
+      return () => unsubscribe();
+    }, []);
+    return todos;
+  }
+  const todos = AddTodo();
   return (
     <FormWrap>
       <Modal />
@@ -27,6 +48,27 @@ function User() {
             <p>To use your account, please verify your email</p>
           )}
         </UserInfo>
+
+        {/* list of todos */}
+        {loggedIn && todos.length > 0 ? (
+          <div className="todos">
+            <h4>Saved todos</h4>
+            <ul>
+              {todos.map(user => {
+                return (
+                  <li key={user.id}>
+                    <p>
+                      Task <b>{user.title},</b>
+                    </p>
+                    <span>description: {user.content}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
       </main>
     </FormWrap>
   );

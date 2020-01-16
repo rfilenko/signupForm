@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import firebase from "../firebase";
+import auth from "firebase/auth";
 export const FormContext = createContext();
 
 const FormContextProvider = props => {

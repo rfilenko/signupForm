@@ -12,7 +12,29 @@ code {
     monospace;
 }
 
-h1 {
-  color: purple;
+/* user page */
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+.todos {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  width: 25rem;
+  background: #171c31;
+  color: #44aed7;
+  margin: 0 1rem;
+}
+
+.todos h4 {
+  color: white;
   text-align: center;
+  margin-top: 0;
+  font-size: 1.4rem;
+}
+
+.todos li span {
+  background: rgba(240, 248, 255, 0.11);
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
 }

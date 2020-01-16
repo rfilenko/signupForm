@@ -15,8 +15,21 @@ export const FormWrap = styled.div`
     top: 1rem;
     display: flex;
     justify-content: space-between;
-    width: 10rem;
 
+    button {
+      background: orange;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      border: none;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease-in;
+      box-shadow: ${props => props.theme.boxShadow};
+      &:hover {
+        box-shadow: ${props => props.theme.boxShadowMd};
+      }
+    }
     a {
       color: whitesmoke;
       text-decoration: none;
@@ -28,6 +41,9 @@ export const FormWrap = styled.div`
     }
     .signup {
       background: ${props => props.theme.green};
+    }
+    .hide {
+      display: none;
     }
   }
 `;

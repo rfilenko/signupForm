@@ -1,16 +1,44 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import firebase from "../firebase";
+
+import { FormContext } from "../context/FormContext";
+import { Link, useHistory } from "react-router-dom";
 
 import useForm from "./useForm";
 
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
+import { ModalError } from "../styles/Modal";
 import { Form } from "../styles/Form";
 
 function FormMain() {
+  const {
+    modalVisible,
+    toggleModal,
+    setModalVisible,
+    errorMsg,
+    setErrorMsg
+  } = useContext(FormContext);
+
+  const history = useHistory();
   const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
+  function login(e) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(values.email, values.password)
+      .then(u => {
+        console.log(`${u.operationType} successfully`);
+        //redirect to user's page
+        history.push("/user");
+      })
+      .catch(err => {
+        setErrorMsg(err.message);
+        setModalVisible(true);
+        console.log(err.message);
+      });
+  }
   function submit() {
-    console.log("Submit successfully");
+    login();
   }
 
   return (
@@ -63,6 +91,17 @@ function FormMain() {
           <Link to="/signup"> Signup</Link>
         </div>
       </Form>
+      <ModalError className={modalVisible ? "modal visible" : "hidden modal"}>
+        <div className="modal-content">
+          <h2>Oops, there was an error...</h2>
+          <p>{errorMsg}</p>
+          <div className="buttons-wrap">
+            <button className="btn modal-close" onClick={toggleModal}>
+              close
+            </button>
+          </div>
+        </div>
+      </ModalError>
     </FormWrap>
   );
 }
