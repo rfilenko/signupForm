@@ -1,4 +1,5 @@
 import { useState } from "react";
+import firebase from "../firebase";
 
 const useForm = callback => {
   const [values, setValues] = useState({
@@ -19,11 +20,26 @@ const useForm = callback => {
   };
   const handleSubmit = e => {
     e.preventDefault();
+
+    //add user to firestore
+    firebase
+      .firestore()
+      .collection("users")
+      .add({
+        user: values.user,
+        email: values.email,
+        password: values.password
+      })
+      .then(() => {
+        console.log("added user to db");
+      });
+
     callback();
     console.log(
-      `Submitted values are - email: ${values.email}, password: ${values.password}, remember: ${values.isChecked}`
+      `Submitted values are - user: ${values.user}, email: ${values.email}`
     );
   };
+
   return { handleChange, handleSubmit, handleFocus, values };
 };
 

@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import firebase from "../firebase";
+import auth from "firebase/auth";
 
 import Nav from "./Nav";
 import Modal from "./Modal";

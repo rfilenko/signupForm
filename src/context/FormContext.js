@@ -11,6 +11,26 @@ const FormContextProvider = props => {
   //error msg
   const [errorMsg, setErrorMsg] = useState("");
 
+  function authListener() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        //logged user
+        setPerson(user);
+        setLoggedIn(true);
+        setLoginBtns(false);
+        console.log(user, person);
+      } else {
+        setPerson({});
+        setLoggedIn(false);
+        setLoginBtns(true);
+        console.log("User is not signin");
+      }
+    });
+  }
+  useEffect(() => {
+    authListener();
+  }, []);
+
   const [modalVisible, setModalVisible] = useState(false);
   const toggleModal = e => {
     e.preventDefault();

@@ -1,15 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
-import useForm from "./useForm";
-
+import firebase from "../firebase";
+import { Link, useHistory } from "react-router-dom";
 import Nav from "./Nav";
 import { FormWrap } from "../styles/Wrap";
 import { FormSign } from "../styles/Form";
 
+import useForm from "./useForm";
+
 function FormSignup() {
+  const history = useHistory();
+
   const { handleChange, handleSubmit, handleFocus, values } = useForm(submit);
+  function signup(e) {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(values.email, values.password)
+      .then(u => {
+        console.log(`${u.operationType} successfully`);
+        //redirect to user's page
+        history.push("/user");
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
+  }
   function submit() {
+    signup();
     console.log("Submit successfully");
   }
 
@@ -57,7 +73,7 @@ function FormSignup() {
         </div>
         <div className="form-field signup-block">
           <span>Already have an account? </span>
-          <Link to="/"> Login</Link>
+          <Link to="/signin"> Login</Link>
         </div>
       </FormSign>
     </FormWrap>
