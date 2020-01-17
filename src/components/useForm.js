@@ -18,22 +18,23 @@ const useForm = callback => {
   const handleFocus = e => {
     setValues({ ...values, [e.target.name]: "" });
   };
+  // const addUser = () => {
+  //   // add user to firestore
+  //   firebase
+  //     .firestore()
+  //     .collection("users")
+  //     .add({
+  //       user: values.user,
+  //       email: values.email,
+  //       password: values.password,
+  //       time: firebase.firestore.FieldValue.serverTimestamp()
+  //     })
+  //     .then(() => {
+  //       console.log("added user to db");
+  //     });
+  // };
   const handleSubmit = e => {
     e.preventDefault();
-
-    //add user to firestore
-    firebase
-      .firestore()
-      .collection("users")
-      .add({
-        user: values.user,
-        email: values.email,
-        password: values.password
-      })
-      .then(() => {
-        console.log("added user to db");
-      });
-
     callback();
     console.log(
       `Submitted values are - user: ${values.user}, email: ${values.email}`

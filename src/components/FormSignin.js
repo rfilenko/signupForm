@@ -81,7 +81,7 @@ function FormMain() {
             Remember me
           </label>
 
-          <Link to="/forgot"> Forgot Password?</Link>
+          <Link to="/"> Forgot Password?</Link>
         </div>
         <div className="form-field">
           <button>Login</button>
@@ -91,7 +91,9 @@ function FormMain() {
           <Link to="/signup"> Signup</Link>
         </div>
       </Form>
-      <ModalError className={modalVisible ? "modal visible" : "hidden modal"}>
+      <ModalError
+        className={modalVisible ? "modal error visible" : "modal error hidden"}
+      >
         <div className="modal-content">
           <h2>Oops, there was an error...</h2>
           <p>{errorMsg}</p>

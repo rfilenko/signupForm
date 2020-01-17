@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FormContextProvider from "./context/FormContext";
 
 import User from "./components/User";
-import FormMain from "./components/FormMain";
+import FormSignin from "./components/FormSignin";
 import FormSignup from "./components/FormSignup";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Switch>
           <FormContextProvider>
-            <Route exact path="/signin" component={FormMain} />
+            <Route exact path="/" component={FormSignin} />
             <Route exact path="/signup" component={FormSignup} />
             <Route exact path="/user" component={User} />
           </FormContextProvider>

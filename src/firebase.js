@@ -4,7 +4,7 @@ import "firebase/auth";
 
 // Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyBPQHxnGrHkBQufkIa0dgt5cGMGOAM_tXY",
+  apiKey: process.env.REACT_APP_APIKEY,
   authDomain: "signupform-a6b68.firebaseapp.com",
   databaseURL: "https://signupform-a6b68.firebaseio.com",
   projectId: "signupform-a6b68",
