@@ -6,6 +6,7 @@ import FormContextProvider from "./context/FormContext";
 import User from "./components/User";
 import FormSignin from "./components/FormSignin";
 import FormSignup from "./components/FormSignup";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="App">
         <Switch>
           <FormContextProvider>
+            <GlobalStyle />
             <Route exact path="/" component={FormSignin} />
             <Route exact path="/signup" component={FormSignup} />
             <Route exact path="/user" component={User} />

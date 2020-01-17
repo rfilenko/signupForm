@@ -21,6 +21,11 @@ export const ModalWrap = styled.div`
   background: #171c31;
   font-family: "Merriweather", serif;
 
+  @media screen and (max-width: 560px) {
+    width: 90%;
+    padding: 0.5rem;
+  }
+
   &.visible {
     z-index: 1003;
     display: block;

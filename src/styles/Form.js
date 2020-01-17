@@ -2,7 +2,6 @@ import styled from "styled-components";
 import tick from "../images/tick.svg";
 
 export const Form = styled.form`
-  @import url("https://fonts.googleapis.com/css?family=Fira+Sans:400,700|Merriweather:400,700&display=swap");
   min-height: 420px;
   padding: 1.5rem;
   border-radius: 0.2rem;
@@ -27,13 +26,10 @@ export const Form = styled.form`
     z-index: 999;
   }
 
-  font-family: "Merriweather", serif;
-
   h2 {
     font-size: 1.75rem;
     font-weight: 500;
     margin-bottom: 3rem;
-    font-family: "Fira Sans", sans-serif;
     text-align: center;
   }
   input {
@@ -50,6 +46,11 @@ export const Form = styled.form`
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 560px) {
+      flex-direction: column;
+      align-items: center;
+    }
 
     label {
       display: flex;

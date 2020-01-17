@@ -32,6 +32,7 @@ export const FormWrap = styled.div`
       }
     }
     a {
+      display: none;
       color: whitesmoke;
       text-decoration: none;
       padding: 0.5rem 1rem;

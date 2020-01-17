@@ -7,6 +7,7 @@ export const UserInfo = styled.div`
   width: 25rem;
   background: #171c31;
   color: #44aed7;
+  margin-bottom: 1rem;
 
   display: flex;
   flex-wrap: wrap;

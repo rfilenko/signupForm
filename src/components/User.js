@@ -6,6 +6,7 @@ import Modal from "./Modal";
 
 import { FormWrap } from "../styles/Wrap";
 import { UserInfo } from "../styles/UserInfo";
+import { UserTodos } from "../styles/UserTodos";
 
 import { FormContext } from "../context/FormContext";
 
@@ -47,27 +48,26 @@ function User() {
             <p>To use your account, please verify your email</p>
           )}
         </UserInfo>
-
-        {/* list of todos */}
-        {loggedIn && todos.length > 0 ? (
-          <div className="todos">
-            <h4>Saved todos</h4>
-            <ul>
-              {todos.map(user => {
-                return (
-                  <li key={user.id}>
-                    <p>
-                      Task <b>{user.title},</b>
-                    </p>
-                    <span>description: {user.content}</span>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
+        <UserTodos>
+          {/* list of todos */}
+          {loggedIn && todos.length > 0 ? (
+            <div className="todos">
+              <h4>Saved todos</h4>
+              <ol>
+                {todos.map(todo => {
+                  return (
+                    <li key={todo.id}>
+                      <b>{todo.title}</b>
+                      <span>{todo.content}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          ) : (
+            ""
+          )}
+        </UserTodos>
       </main>
     </FormWrap>
   );
