@@ -17,7 +17,8 @@ export const FormWrap = styled.div`
     justify-content: space-between;
 
     button {
-      background: orange;
+      display: none;
+      background: ${props => props.theme.orange};
       text-decoration: none;
       padding: 0.5rem 1rem;
       border-radius: 1rem;
@@ -41,6 +42,9 @@ export const FormWrap = styled.div`
     }
     .signup {
       background: ${props => props.theme.green};
+    }
+    .show {
+      display: block;
     }
     .hide {
       display: none;

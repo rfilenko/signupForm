@@ -22,27 +22,23 @@ function Nav() {
       );
 
     //redirect to signin page after
-    history.push("/signin");
+    history.push("/");
   }
   return (
     <nav>
-      <button
-        data-target="modal-create"
-        className={loginBtns ? "hide" : ""}
-        onClick={toggleModal}
-      >
-        add
+      <button className={loginBtns ? "hide" : "show"} onClick={toggleModal}>
+        add todo
       </button>
-      <button onClick={handleSignOut} className={loginBtns ? "hide" : ""}>
+      <button onClick={handleSignOut} className={loginBtns ? "hide" : "show"}>
         signout
       </button>
-      <NavLink exact to="/signin" className={loginBtns ? "" : "hide"}>
+      <NavLink exact to="/" className={loginBtns ? "show" : "hide"}>
         Signin
       </NavLink>
-      <NavLink exact to="/signup" className={loginBtns ? "" : "hide"}>
+      <NavLink exact to="/signup" className={loginBtns ? "show" : "hide"}>
         Signup
       </NavLink>
-      <NavLink exact to="/user" className={loginBtns ? "hide" : ""}>
+      <NavLink exact to="/user" className={loginBtns ? "hide" : "show"}>
         profile
       </NavLink>
     </nav>

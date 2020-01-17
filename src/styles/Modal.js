@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ModalWrap = styled.div`
-  background: red;
   display: none;
   position: fixed;
   left: 0;
@@ -9,7 +8,6 @@ export const ModalWrap = styled.div`
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
-  width: 55%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -38,7 +36,11 @@ export const ModalWrap = styled.div`
 
   &:before {
     content: "";
-    background-image: linear-gradient(139deg, #7158bd, #9d8ad7);
+    background-image: linear-gradient(
+      139deg,
+      ${props => props.theme.primary},
+      ${props => props.theme.inputColor}
+    );
     border-top-left-radius: 0.2rem;
     border-top-right-radius: 0.2rem;
     position: absolute;
@@ -58,7 +60,7 @@ export const ModalWrap = styled.div`
   }
   label {
     font-family: "Fira Sans", sans-serif;
-    color: #7158bd;
+    color: ${props => props.theme.primary};
   }
   .input-field {
     width: 100%;
@@ -80,14 +82,18 @@ export const ModalWrap = styled.div`
     border: none;
     padding: 1em 0.5em;
     width: 85%;
-    color: #44aed7;
+    color: ${props => props.theme.lightBlue};
     margin-bottom: 1rem;
     border-radius: 5px;
   }
   button {
     display: inline-block;
-    background: linear-gradient(25deg, #7158bd, #9e6bae);
-    color: #e6e7e8;
+    background: linear-gradient(
+      25deg,
+      ${props => props.theme.primary},
+      #9e6bae
+    );
+    color: ${props => props.theme.colorText};
     border: none;
     padding: 1rem;
     width: 50%;
@@ -107,16 +113,27 @@ export const ModalWrap = styled.div`
     transition: all 0.25s ease-in;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    background: linear-gradient(-135deg, #7158bd, #9d8ad7);
+    background: linear-gradient(
+      -135deg,
+      ${props => props.theme.primary},
+      ${props => props.theme.secondary}
+    );
   }
   button.modal-close {
-    background: linear-gradient(75deg, #44aed7, #46cf70);
+    background: linear-gradient(
+      75deg,
+      ${props => props.theme.lightBlue},
+      ${props => props.theme.green}
+    );
   }
   button.modal-close:hover {
     transition: all 0.25s ease-in;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    background: linear-gradient(-225deg, #46cf70 #44aed7);
+    background: linear-gradient(
+      -225deg,
+      ${props => props.theme.green} ${props => props.theme.lightBlue}
+    );
   }
   .buttons-wrap {
     display: flex;
@@ -126,28 +143,41 @@ export const ModalWrap = styled.div`
 
 // A new ModalError component based on ModalWrap
 export const ModalError = styled(ModalWrap)`
-  /* //error modal  */
-  top: 32%;
-  width: 46%;
-  min-height: unset;
-  &:before {
-    content: "";
-    background-image: linear-gradient(139deg, red, orange);
-  }
-  .modal-content {
-    padding: 8px;
-  }
-  .buttons-wrap {
-    justify-content: flex-end;
-  }
-  button.modal-close {
-    display: inline-block;
-    background: linear-gradient(25deg, orange, red);
-  }
-  button.modal-close:hover {
-    transition: all 0.25s ease-in;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    background: linear-gradient(-205deg, red, orange);
+  &.error {
+    max-width: 25rem;
+    min-height: unset;
+    top: 32%;
+    &:before {
+      content: "";
+      background-image: linear-gradient(
+        139deg,
+        ${props => props.theme.red},
+        ${props => props.theme.orange}
+      );
+    }
+
+    .modal-content {
+      padding: 8px;
+    }
+    .buttons-wrap {
+      justify-content: flex-end;
+    }
+    button.modal-close {
+      display: inline-block;
+      background: linear-gradient(
+        25deg,
+        ${props => props.theme.orange},
+        ${props => props.theme.red}
+      );
+    }
+    button.modal-close:hover {
+      transition: all 0.25s ease-in;
+      box-shadow: ${props => props.theme.boxShadow};
+      background: linear-gradient(
+        -205deg,
+        ${props => props.theme.red},
+        ${props => props.theme.orange}
+      );
+    }
   }
 `;

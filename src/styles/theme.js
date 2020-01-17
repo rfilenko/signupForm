@@ -6,7 +6,8 @@ const blueMarguerite = "#7158bd";
 const portage = "#9d8ad7";
 const summerSky = "#44aed7";
 const emerald = "#46CF70";
-
+const tangerineYellow = "#ffcc00";
+const scarlet = "#F22C00";
 const boxShadow = `
   0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 `;
@@ -24,6 +25,8 @@ const primary = blueMarguerite;
 const secondary = portage;
 const lightBlue = summerSky;
 const green = emerald;
+const orange = tangerineYellow;
+const red = scarlet;
 
 export default {
   colorBg,
@@ -34,6 +37,8 @@ export default {
   secondary,
   lightBlue,
   green,
+  orange,
+  red,
   boxShadow,
   boxShadowMd
 };
